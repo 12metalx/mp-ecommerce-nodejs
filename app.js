@@ -13,6 +13,27 @@ app.get('/', function (req, res) {
 app.get('/detail', function (req, res) {
     res.render('detail', req.query);
 });
+app.get('/checkout',function(req,res){
+const mercadopago = require('mercadopago');
+mercadopago.configure({
+    access_token: 'PROD_ACCESS_TOKEN'
+});
+let preference = {
+    items:[
+        {
+            title: 'Mi producto',
+            unit_price: 100,
+            quantity: 1,
+        }
+    ]
+};
+mercadopago.preference.create(preference).then(function(response){
+    global.init_point = response.body.init_point;
+}).catch(function(error){
+    console.log(error);
+});
+
+});
 
 app.use(express.static('assets'));
  
