@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+const { response } = require('express');
  
 var app = express();
  
@@ -27,12 +28,12 @@ let preference = {
         }
     ]
 };
-mercadopago.preference.create(preference).then(function(response){
-    global.init_point = response.body.init_point;
+mercadopago.preference.create(preference).then(function(res){
+    global.init_point = res.body.init_point;
 }).catch(function(error){
     console.log(error);
 });
-
+res.render('home');
 });
 
 app.use(express.static('assets'));
