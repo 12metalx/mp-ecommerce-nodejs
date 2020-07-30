@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 app.get('/detail', function (req, res) {
     res.render('detail', req.query);
 });
-app.get('/checkout',function(req,res){
+app.post('/checkout',function(req,res){
 const mercadopago = require('mercadopago');
 mercadopago.configure({
     access_token: 'PROD_ACCESS_TOKEN'
