@@ -16,8 +16,9 @@ app.get('/detail', function (req, res) {
 });
 app.post('/checkout',function(req,res){
 const mercadopago = require('mercadopago');
+
 mercadopago.configure({
-    access_token: 'PROD_ACCESS_TOKEN'
+    access_token: 'TEST-8760918236611169-073004-929293cff3b240708b68e9a9483a9d55-152109012'
 });
 let preference = {
     items:[
@@ -28,12 +29,15 @@ let preference = {
         }
     ]
 };
-mercadopago.preference.create(preference).then(function(res){
-    global.init_point = res.body.init_point;
+mercadopago.preferences.create(preference).then(function(response){
+    console.log(global.init_point);
+    console.log(response);  
+    global.init_point = response.body.init_point; 
+    console.log(global.init_point);
 }).catch(function(error){
     console.log(error);
 });
-res.render('home');
+
 });
 
 app.use(express.static('assets'));

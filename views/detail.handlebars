@@ -69,6 +69,8 @@
                         </div>
 
                         <form action="/checkout" method='POST'>
+                         <script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
+
                         <div class="as-producttile-info" style="float:left;min-height: 168px;">
                             <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
                                 <div class="as-producttile-title">
@@ -86,10 +88,13 @@
                                     {{ unit }}
                                 </h3>
                             </div>
-                            <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                          <script
+    src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
+   data-preference-id="$$id$$">
+  </script>  
                         </div>
                         </form>
-
+                        $$init_point$$
 
                     </div>
                 </div>
